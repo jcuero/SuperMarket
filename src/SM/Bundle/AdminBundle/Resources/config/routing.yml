@@ -1,0 +1,23 @@
+sm_admin_cliente:
+    resource: @SMAdminBundle/Resources/config/routing/cliente.yml
+    prefix:   /cliente
+
+sm_admin_empleado:
+    resource: @SMAdminBundle/Resources/config/routing/empleado.yml
+    prefix:   /empleado
+
+sm_admin_departamento:
+    resource: @SMAdminBundle/Resources/config/routing/departamento.yml
+    prefix:   /departamento
+
+sm_admin_ciudad:
+    resource: @SMAdminBundle/Resources/config/routing/ciudad.yml
+    prefix:   /ciudad
+
+sm_admin_producto:
+    resource: @SMAdminBundle/Resources/config/routing/producto.yml
+    prefix:   /producto
+
+sm_admin_clase_producto:
+    resource: @SMAdminBundle/Resources/config/routing/clase_producto.yml
+    prefix:   /claseproducto

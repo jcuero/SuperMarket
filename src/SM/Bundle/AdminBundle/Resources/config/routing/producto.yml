@@ -1,0 +1,11 @@
+sm_admin_producto:
+    pattern: /
+    defaults: {_controller: SMAdminBundle:Producto:productos }
+
+sm_admin_producto_new:
+    pattern: /new
+    defaults: {_controller: SMAdminBundle:Producto:new }
+
+sm_admin_producto_edit:
+    pattern: /edit/{id}
+    defaults: {_controller: SMAdminBundle:Producto:edit }

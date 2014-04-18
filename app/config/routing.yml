@@ -1,0 +1,3 @@
+sm_admin:
+    resource: "@SMAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin

@@ -1,0 +1,11 @@
+sm_admin_cliente:
+    pattern: /
+    defaults: {_controller: SMAdminBundle:Cliente:clientes }
+
+sm_admin_cliente_new:
+    pattern: /new
+    defaults: { _controller: SMAdminBundle:Cliente:new }
+
+sm_admin_cliente_edit:
+    pattern: /edit/{id}
+    defaults: { _controller: SMAdminBundle:Cliente:edit }

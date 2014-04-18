@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+{% block title %} Departamentos {% endblock %}
+
+{% block body %}
+
+<h1>Departamentos</h1>
+	<table border="1">
+		<tr>
+			<th>#</th>
+			<th>Nombre</th>
+  		<th>Editar</th>
+		</tr>
+	
+		{% for departamento in departamentos %}
+			<tr>
+				<td> {{ loop.index }}</td>
+  				<td>{{ departamento.nombre }}</td>
+  				<td> 			
+  					<a href="{{ path('sm_admin_departamento_edit', { 'id': departamento.id })}}">
+  						editar
+  					</a>
+  				</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+{% endblock %}

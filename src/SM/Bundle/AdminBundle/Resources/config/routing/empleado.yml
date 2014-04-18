@@ -1,0 +1,7 @@
+sm_admin_empleado:
+    pattern: /
+    defaults: {_controller: SMAdminBundle:Empleado:empleados }
+
+sm_admin_empleado_edit:
+    pattern: /edit/{id}
+    defaults: { _controller:SMAdminBundle:Empleado:edit }

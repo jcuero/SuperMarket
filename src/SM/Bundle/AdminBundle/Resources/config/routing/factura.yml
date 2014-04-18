@@ -1,0 +1,3 @@
+sm_admin_cliente:
+    pattern: /
+    defaults: {_controller: SMAdminBundle:Cliente:clientes }

@@ -1,0 +1,7 @@
+sm_admin_ciudad:
+    pattern: /
+    defaults: {_controller: SMAdminBundle:Ciudad:ciudades }
+
+sm_admin_ciudad_edit:
+    pattern: /edit/{id}
+    defaults: {_controller: SMAdminBundle:Ciudad:edit }

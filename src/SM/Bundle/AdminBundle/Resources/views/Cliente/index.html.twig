@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+{% block title %} Clientes {% endblock %}
+
+{% block body %}
+
+<h1>Nuestros Clientes</h1>
+	<table border="1">
+		<tr>
+			<th>#</th>
+			<th>Cedula</th>
+  			<th>Nombre Completo</th>
+  			<th>Direccion</th>
+  			<th>Email</th>
+  			<th>Fecha Creacion</th>
+  			<th>Plazo Factura</th>
+  			<th>Telefono</th>
+        <th>Ciudad</th>
+  			<th>Editar</th>
+		</tr>
+	
+		{% for cliente in clientes %}
+			<tr>
+				<td> {{ loop.index }}</td>
+  				<td>{{ cliente.cedula }}</td>
+  				<td>{{ cliente.nombreCompleto }}</td>
+  				<td>{{ cliente.direccion }}</td>
+  				<td>{{ cliente.email }}</td>
+  				<td>{{ cliente.fechaCreacion|date("d-m-Y") }}</td>
+  				<td>{{ cliente.plazoFactura|date("d-m-Y")  }}</td>
+  				<td>{{ cliente.telefono }}</td>
+          <td>{{ cliente.ciudad }}</td>
+
+  				<td> 			
+  					<a href="{{ path('sm_admin_cliente_edit', { 'id': cliente.id })}}">
+  						editar
+  					</a>
+  				</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+{% endblock %}

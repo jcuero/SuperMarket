@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+{% block title %} Productos {% endblock %}
+
+{% block body %}
+
+<h1>Productos</h1>
+	<table border="1">
+		<tr>
+			<th>#</th>
+			<th>Codigo</th>
+  		<th>Descripcion</th>
+  		<th>precio</th>
+  		<th>Clase de Producto</th>
+  		<th>Editar</th>
+		</tr>
+	
+		{% for producto in productos %}
+			<tr>
+				<td> {{ loop.index }}</td>
+  				<td>{{ producto.codigo }}</td>
+  				<td>{{ producto.descripcion }}</td>
+  				<td>$ {{ producto.precio }}</td>
+  				<td>{{ producto.claseProducto }}</td>
+
+  				<td> 			
+  					<a href="{{ path('sm_admin_producto_edit', { 'id': producto.id })}}">
+  						editar
+  					</a>
+  				</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+{% block title %} Ciudades {% endblock %}
+
+{% block body %}
+
+<h1>Ciudades</h1>
+	<table border="1">
+		<tr>
+		  <th>#</th>
+  		<th>Nombre</th>
+  		<th>Departamento</th>
+  		<th>Editar</th>
+		</tr>
+	
+		{% for ciudad in ciudades %}
+			<tr>
+				<td> {{ loop.index }}</td>
+  				<td>{{ ciudad.nombre }}</td>
+          <td>{{ ciudad.departamento }}</td>
+
+  				<td> 			
+  					<a href="{{ path('sm_admin_ciudad_edit', { 'id': ciudad.id })}}">
+  						editar
+  					</a>
+  				</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+{% endblock %}

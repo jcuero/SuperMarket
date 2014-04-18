@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+{% block title %} Empleados {% endblock %}
+
+{% block body %}
+
+<h1>Nuestros Empleados</h1>
+	<table border="1">
+		<tr>
+			<th>#</th>
+			<th>Cedula</th>
+  			<th>Nombre Completo</th>
+		</tr>
+	
+		{% for empleado in empleados %}
+			<tr>
+				<td> {{ loop.index }}</td>
+  				<td>{{ empleado.cedula }}</td>
+  				<td>{{ empleado.nombreCompleto }}</td>
+  				<td> 			
+  					<a href="{{ path('sm_admin_empleado_edit', { 'id': empleado.id })}}">
+  						editar
+  					</a>
+  				</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+{% endblock %}
