@@ -11,8 +11,9 @@ class DepartamentoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
-            ->add('save', 'submit');
+            ->add('nombre', null, array('attr' => array('placeholder' => 'Ingrese el nombre', 'class' => 'form-control', 'title' => "Ingrese el nombre" )))
+
+            ->add('confirmarRegistro', 'submit', array('attr' => array('value' => 'Confirmar registro', 'class' => 'btn btn-danger')));
     }
 
 	public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -24,6 +25,6 @@ class DepartamentoType extends AbstractType
 
     public function getName()
     {
-        return 'departamentoType';
+        return 'sm_admin_departamentoType';
     }
 }

@@ -1,34 +1,67 @@
-{% extends "base.html.twig" %}
+{% extends "backend.html.twig" %}
 {% block title %} Productos {% endblock %}
 
-{% block body %}
+{% block contenido %}
 
-<h1>Productos</h1>
-	<table border="1">
-		<tr>
-			<th>#</th>
-			<th>Codigo</th>
-  		<th>Descripcion</th>
-  		<th>precio</th>
-  		<th>Clase de Producto</th>
-  		<th>Editar</th>
-		</tr>
-	
-		{% for producto in productos %}
-			<tr>
-				<td> {{ loop.index }}</td>
-  				<td>{{ producto.codigo }}</td>
-  				<td>{{ producto.descripcion }}</td>
-  				<td>$ {{ producto.precio }}</td>
-  				<td>{{ producto.claseProducto }}</td>
+    <div class="sub-header">
+        <div class="col-lg-3 btn-search">
+            <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                    <a href=" path('sm_admin_producto_search') " class="btn btn-default" role="button">
+                        Buscar
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="text-right">
+            <a href="{{ path('sm_admin_producto_new') }}">
+                <button type="button" class="btn btn-danger">Agregar un producto</button>
+            </a>
+        </div>
+    </div>
 
-  				<td> 			
-  					<a href="{{ path('sm_admin_producto_edit', { 'id': producto.id })}}">
-  						editar
-  					</a>
-  				</td>
-			</tr>
-		{% endfor %}
-	</table>
+    <div class="table-responsive">
+        <table class='table table-striped table-hover table-bordered'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Codigo</th>
+                    <th>Descripcion </th>
+                    <th>Existencia</th>
+                    <th>Precio</th>
+                    <th>Clase Producto</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for producto in productosPadinados %}
+                    <tr>
+                        <td> {{ loop.index }}</td>
+                        <td>{{ producto.codigo }}</td>
+                        <td>{{ producto.descripcion }}</td>
+                        <td>{{ producto.existencia }}</td>
+                        <td>$ {{ producto.precio }}</td>
+                        <td>{{ producto.claseProducto }}</td>
+                        <td class="td-no-hover">
+                            <div class="btn-group btn-group-sm">
+                              <a href="{{ path('sm_admin_producto_edit', {'id': producto.id}) }}" class="btn btn-default" role="button">
+                                <i class="fa fa-pencil-square-o"></i>
+                              </a>
+                              <a href="{{ path('sm_admin_producto_delete', {'id': producto.id} ) }}" class="btn btn-default" role="button">
+                                <i class="fa fa-trash-o"></i>
+                              </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        {# incluimos el paginador  #}
+        {{ knp_pagination_render(productosPadinados) }}
+
+    </div>
 
 {% endblock %}

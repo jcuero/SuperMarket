@@ -1,3 +1,7 @@
+sm_admin_portada:
+    resource: @SMAdminBundle/Resources/config/routing/portada.yml
+    prefix: /
+
 sm_admin_cliente:
     resource: @SMAdminBundle/Resources/config/routing/cliente.yml
     prefix:   /cliente
@@ -21,3 +25,11 @@ sm_admin_producto:
 sm_admin_clase_producto:
     resource: @SMAdminBundle/Resources/config/routing/clase_producto.yml
     prefix:   /claseproducto
+
+sm_admin_factura:
+    resource: @SMAdminBundle/Resources/config/routing/factura.yml
+    prefix:   /factura
+
+sm_admin_tipo_incidente:
+    resource: @SMAdminBundle/Resources/config/routing/tipo_incidente.yml
+    prefix:   /tipoincidente

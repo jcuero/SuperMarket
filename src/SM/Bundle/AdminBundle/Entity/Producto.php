@@ -22,6 +22,9 @@ class Producto
     /** @ORM\Column(type="string", length=100, unique=true) */
     private $descripcion;
 
+    /** @ORM\Column(type="integer") */
+    private $existencia;
+
     /** @ORM\Column(type="decimal") */
     private $precio;
 
@@ -85,6 +88,29 @@ class Producto
     public function getDescripcion()
     {
         return $this->descripcion;
+    }
+
+    /**
+     * Set existencia
+     *
+     * @param string $existencia
+     * @return Producto
+     */
+    public function setExistencia($existencia)
+    {
+        $this->existencia = $existencia;
+
+        return $this;
+    }
+
+    /**
+     * Get existencia
+     *
+     * @return integer 
+     */
+    public function getExistencia()
+    {
+        return $this->existencia;
     }
 
     /**

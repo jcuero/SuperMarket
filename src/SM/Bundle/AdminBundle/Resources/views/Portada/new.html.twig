@@ -1,0 +1,85 @@
+{% extends "backend.html.twig" %}
+{% block title %} Clientes {% endblock %}
+
+{% block contenido %}
+
+    <ol class="breadcrumb">
+        <li><a href="{{ path('sm_admin_portada') }}">Inicio</a></li>
+        <li><a href="{{ path('sm_admin_cliente') }}">Cliente</a></li>
+        <li class="active">Agregar</li>
+    </ol>  
+
+    
+    {% for mensaje in app.session.flashbag.get('success') %}
+        <div class="alert alert-success">
+            {{ mensaje }}
+        </div>
+    {% endfor %}
+
+
+    <!-- Formulario -->
+    <form class="form-new" role="form" action="{{ path('sm_admin_cliente_new') }}" method="POST">
+    {{ form_errors(formulario) }}
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Información Personal</h3>
+            </div>
+            <div class="panel-body"> 
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        {{ form_widget(formulario.cedula) }}
+                    </div>
+                    <div class="col-sm-4">
+                        {{ form_widget(formulario.nombres) }}
+                    </div>
+                    <div class="col-md-4 col-md-offset-0">
+                        {{ form_widget(formulario.apellidos) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        {{ form_widget(formulario.direccion) }}
+                    </div>
+                    <div class="col-sm-4">
+                        {{ form_widget(formulario.telefono) }}
+                    </div>
+                    <div class="col-md-4 col-md-offset-0">
+                        {{ form_widget(formulario.email) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        {{ form_widget(formulario.ciudad) }}
+                    </div>
+                    <div class="col-sm-4">
+                        {{ form_widget(formulario.telefono) }}
+                    </div>
+                    <div class="col-md-4 col-md-offset-0">
+                        {{ form_widget(formulario.email) }}
+                    </div>
+                </div>
+
+            </div>
+        </div>      
+
+        <div class="sub-panel">
+            <div class="text-left">
+                {{ form_widget(formulario.confirmarRegistro) }}
+                <a href=" {{ path('sm_admin_cliente') }} ">
+                    <button type="button" class="btn btn-default">Cancelar</button>
+                </a>
+            </div>
+        </div>  
+
+        {{ form_rest(formulario) }}
+            
+
+    </form>
+    <!-- Fin formulario -->
+
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "backend.html.twig" %}
+{% block title %} Editar Ciudad {% endblock %}
+
+{% block contenido %}
+
+    <ol class="breadcrumb">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Ciudad</a></li>
+        <li class="active">Nuevo</li>
+    </ol>  
+    <!-- Formulario -->
+
+    <form class="form-new" role="form" action="{{ path('sm_admin_ciudad_edit', { 'id': ciudad.id })}}" method="POST">
+
+    {{ form_errors(formulario) }}
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Información Básica</h3>
+            </div>
+            <div class="panel-body"> 
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        {{ form_widget(formulario.nombre) }}
+                    </div>
+                    <div class="col-sm-4">
+                    {{ form_widget(formulario.departamento) }}
+                    </div>
+                    <div class="col-md-4 col-md-offset-0">
+                    </div>
+                </div>
+
+            </div>
+        </div>      
+
+        <div class="sub-panel">
+            <div class="text-left">
+                {{ form_widget(formulario.confirmarRegistro) }}
+                <a href="{{ path('sm_admin_ciudad') }}">
+                    <button type="button" class="btn btn-default">Cancelar</button>
+                </a>
+            </div>
+        </div>  
+
+        {{ form_rest(formulario) }}
+            
+
+    </form>
+    <!-- Fin formulario -->
+
+
+{% endblock %}

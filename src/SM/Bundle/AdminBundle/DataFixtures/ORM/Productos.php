@@ -23,6 +23,7 @@ class Productos extends AbstractFixture implements OrderedFixtureInterface
 		{ 
 			$entidad = new Producto();
 			$entidad->setCodigo("XYZ-".$i);
+			$entidad->setExistencia(rand(0, 50));
 			$entidad->setDescripcion("producto-".$i);
 			$entidad->setPrecio(rand(2500, 10000));
 

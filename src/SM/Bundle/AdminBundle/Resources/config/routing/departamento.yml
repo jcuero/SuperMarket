@@ -1,6 +1,6 @@
 sm_admin_departamento:
     pattern: /
-    defaults: {_controller: SMAdminBundle:Departamento:departamentos }
+    defaults: {_controller: SMAdminBundle:Departamento:index }
 
 sm_admin_departamento_new:
     pattern: /new
@@ -9,3 +9,7 @@ sm_admin_departamento_new:
 sm_admin_departamento_edit:
     pattern: /edit/{id}
     defaults: {_controller: SMAdminBundle:Departamento:edit }
+
+sm_admin_departamento_delete:
+    pattern: /delete/{id}
+    defaults: { _controller: SMAdminBundle:Departamento:delete }

@@ -1,0 +1,19 @@
+sm_admin_tipo_incidente:
+    pattern: /
+    defaults: { _controller: SMAdminBundle:TipoIncidente:index }
+
+sm_admin_tipo_incidente_new:
+    pattern: /new
+    defaults: { _controller: SMAdminBundle:TipoIncidente:new }
+
+sm_admin_tipo_incidente_view:
+    pattern: /view/{id}
+    defaults: { _controller: SMAdminBundle:TipoIncidente:view }
+
+sm_admin_tipo_incidente_edit:
+    pattern: /edit/{id}
+    defaults: { _controller: SMAdminBundle:TipoIncidente:edit }
+
+sm_admin_tipo_incidente_delete:
+    pattern: /delete/{id}
+    defaults: { _controller: SMAdminBundle:TipoIncidente:delete }

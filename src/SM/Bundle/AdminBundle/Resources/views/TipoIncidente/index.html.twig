@@ -1,0 +1,59 @@
+{% extends "backend.html.twig" %}
+{% block title %} Tipo Incidente {% endblock %}
+
+{% block contenido %}
+
+    <div class="sub-header">
+        <div class="col-lg-3 btn-search">
+            <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                    <a href=" path('sm_admin_tipo_incidente_search') " class="btn btn-default" role="button">
+                        Buscar
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="text-right">
+            <a href="{{ path('sm_admin_tipo_incidente_new') }}">
+                <button type="button" class="btn btn-danger">Agregar un tipo de incidente</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class='table table-striped table-hover table-bordered'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for tipoIncidente in tiposIncidentesPadinados %}
+                    <tr>
+                        <td> {{ loop.index }}</td>
+                        <td>{{ tipoIncidente.tipo }}</td>
+                        <td class="td-no-hover">
+                            <div class="btn-group btn-group-sm">
+                              <a href="{{ path('sm_admin_tipo_incidente_edit', {'id': tipoIncidente.id}) }}" class="btn btn-default" role="button">
+                                <i class="fa fa-pencil-square-o"></i>
+                              </a>
+                              <a href="{{ path('sm_admin_tipo_incidente_delete', {'id': tipoIncidente.id} ) }}" class="btn btn-default" role="button">
+                                <i class="fa fa-trash-o"></i>
+                              </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        {# incluimos el paginador  #}
+        {{ knp_pagination_render(tiposIncidentesPadinados) }}
+
+    </div>
+
+{% endblock %}

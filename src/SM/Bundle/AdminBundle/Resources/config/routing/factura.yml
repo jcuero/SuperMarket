@@ -1,3 +1,7 @@
-sm_admin_cliente:
+sm_admin_factura:
     pattern: /
-    defaults: {_controller: SMAdminBundle:Cliente:clientes }
+    defaults: {_controller: SMAdminBundle:Factura:index }
+
+sm_admin_factura_buscar_producto:
+    pattern: /buscar-producto
+    defaults: {_controller: SMAdminBundle:Factura:buscarProducto }

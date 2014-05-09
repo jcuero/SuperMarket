@@ -1,11 +1,23 @@
 sm_admin_clase_producto:
     pattern: /
-    defaults: {_controller: SMAdminBundle:ClaseProducto:claseProductos }
+    defaults: {_controller: SMAdminBundle:ClaseProducto:index }
+
+sm_admin_clase_producto_new:
+    pattern: /new
+    defaults: {_controller: SMAdminBundle:ClaseProducto:new }
 
 sm_admin_clase_producto_edit:
     pattern: /edit/{id}
     defaults: {_controller: SMAdminBundle:ClaseProducto:edit }
 
-sm_admin_clase_producto_new:
-    pattern: /new
-    defaults: {_controller: SMAdminBundle:ClaseProducto:new }
+sm_admin_clase_producto_view:
+    pattern: /view/{id}
+    defaults: {_controller: SMAdminBundle:ClaseProducto:view }
+
+sm_admin_clase_producto_delete:
+    pattern: /delete/{id}
+    defaults: {_controller: SMAdminBundle:ClaseProducto:delete }
+
+sm_admin_clase_producto_search:
+    pattern: /search
+    defaults: {_controller: SMAdminBundle:ClaseProducto:search}

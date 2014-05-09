@@ -1,7 +1,19 @@
 sm_admin_ciudad:
     pattern: /
-    defaults: {_controller: SMAdminBundle:Ciudad:ciudades }
+    defaults: {_controller: SMAdminBundle:Ciudad:index }
+
+sm_admin_ciudad_new:
+    pattern: /new
+    defaults: {_controller: SMAdminBundle:Ciudad:new }
 
 sm_admin_ciudad_edit:
     pattern: /edit/{id}
     defaults: {_controller: SMAdminBundle:Ciudad:edit }
+
+sm_admin_ciudad_delete:
+    pattern: /delete/{id}
+    defaults: {_controller: SMAdminBundle:Ciudad:delete }
+
+sm_admin_ciudad_view:
+    pattern: /view/{id}
+    defaults: {_controller: SMAdminBundle:Ciudad:view }

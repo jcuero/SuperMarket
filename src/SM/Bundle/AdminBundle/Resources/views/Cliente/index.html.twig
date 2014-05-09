@@ -1,42 +1,71 @@
-{% extends "base.html.twig" %}
+{% extends "backend.html.twig" %}
 {% block title %} Clientes {% endblock %}
 
-{% block body %}
+{% block contenido %}
 
-<h1>Nuestros Clientes</h1>
-	<table border="1">
-		<tr>
-			<th>#</th>
-			<th>Cedula</th>
-  			<th>Nombre Completo</th>
-  			<th>Direccion</th>
-  			<th>Email</th>
-  			<th>Fecha Creacion</th>
-  			<th>Plazo Factura</th>
-  			<th>Telefono</th>
-        <th>Ciudad</th>
-  			<th>Editar</th>
-		</tr>
-	
-		{% for cliente in clientes %}
-			<tr>
-				<td> {{ loop.index }}</td>
-  				<td>{{ cliente.cedula }}</td>
-  				<td>{{ cliente.nombreCompleto }}</td>
-  				<td>{{ cliente.direccion }}</td>
-  				<td>{{ cliente.email }}</td>
-  				<td>{{ cliente.fechaCreacion|date("d-m-Y") }}</td>
-  				<td>{{ cliente.plazoFactura|date("d-m-Y")  }}</td>
-  				<td>{{ cliente.telefono }}</td>
-          <td>{{ cliente.ciudad }}</td>
+    <div class="sub-header">
+        <div class="col-lg-3 btn-search">
+            <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                    <a href="{{ path('sm_admin_cliente_search') }}" class="btn btn-default" role="button">
+                        Buscar
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="text-right">
+            <a href="{{ path('sm_admin_cliente_new') }}">
+                <button type="button" class="btn btn-danger">Agregar un cliente</button>
+            </a>
+        </div>
+    </div>
 
-  				<td> 			
-  					<a href="{{ path('sm_admin_cliente_edit', { 'id': cliente.id })}}">
-  						editar
-  					</a>
-  				</td>
-			</tr>
-		{% endfor %}
-	</table>
+    <div class="table-responsive">
+        <table class='table table-striped table-hover table-bordered'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Cedula</th>
+                    <th>Nombre Completo</th>
+                    <th>Direccion</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Fecha de registro</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for cliente in clientesPadinados %}
+                    <tr>
+                        <td> {{ loop.index }}</td>
+                        <td>{{ cliente.cedula }}</td>
+                        <td>{{ cliente.nombreCompleto }}</td>
+                        <td>{{ cliente.direccion }}</td>
+                        <td>{{ cliente.email }}</td>
+                        <td>{{ cliente.telefono }}</td>
+                        <td>{{ cliente.fechaCreacion | date('d-m-Y') }}</td>
+                        
+                        <td class="td-no-hover">
+                            <div class="btn-group btn-group-sm">
+                              <a href="{{ path('sm_admin_cliente_edit', {'id': cliente.id}) }}" class="btn btn-default" role="button">
+                                <i class="fa fa-pencil-square-o"></i>
+                              </a>
+                              <a href="{{ path('sm_admin_cliente_delete', {'id': cliente.id} ) }}" class="btn btn-default" role="button">
+                                <i class="fa fa-trash-o"></i>
+                              </a>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        {# incluimos el paginador  #}
+        {{ knp_pagination_render(clientesPadinados) }}
+
+    </div>
 
 {% endblock %}

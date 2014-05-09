@@ -1,0 +1,3 @@
+sm_admin_portada:
+    pattern: /
+    defaults: {_controller: SMAdminBundle:Portada:index }

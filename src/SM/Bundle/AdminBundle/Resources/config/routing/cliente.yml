@@ -1,6 +1,6 @@
 sm_admin_cliente:
     pattern: /
-    defaults: {_controller: SMAdminBundle:Cliente:clientes }
+    defaults: {_controller: SMAdminBundle:Cliente:index }
 
 sm_admin_cliente_new:
     pattern: /new
@@ -9,3 +9,15 @@ sm_admin_cliente_new:
 sm_admin_cliente_edit:
     pattern: /edit/{id}
     defaults: { _controller: SMAdminBundle:Cliente:edit }
+
+sm_admin_cliente_delete:
+    pattern: /delete/{id}
+    defaults: { _controller: SMAdminBundle:Cliente:delete }
+
+sm_admin_cliente_view:
+    pattern: /view/{id}
+    defaults: { _controller: SMAdminBundle:Cliente:view }
+
+sm_admin_cliente_search:
+    pattern: /search
+    defaults: { _controller: SMAdminBundle:Cliente:search }

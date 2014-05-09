@@ -1,7 +1,19 @@
 sm_admin_empleado:
     pattern: /
-    defaults: {_controller: SMAdminBundle:Empleado:empleados }
+    defaults: {_controller: SMAdminBundle:Empleado:index }
+
+sm_admin_empleado_new:
+    pattern: /new
+    defaults: { _controller:SMAdminBundle:Empleado:new }
 
 sm_admin_empleado_edit:
     pattern: /edit/{id}
     defaults: { _controller:SMAdminBundle:Empleado:edit }
+
+sm_admin_empleado_view:
+    pattern: /view/{id}
+    defaults: { _controller:SMAdminBundle:Empleado:view }
+
+sm_admin_empleado_delete:
+    pattern: /delete/{id}
+    defaults: { _controller:SMAdminBundle:Empleado:delete }

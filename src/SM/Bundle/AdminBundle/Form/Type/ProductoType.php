@@ -11,11 +11,13 @@ class ProductoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('codigo')
-            ->add('descripcion')
-            ->add('precio')
-            ->add('claseProducto')
-            ->add('save', 'submit');
+            ->add('codigo', null, array('attr' => array('placeholder' => 'Ingrese el código', 'class' => 'form-control', 'title' => "Ingrese el código" )))
+            ->add('descripcion', null, array('attr' => array('placeholder' => 'Ingrese la descripcion del producto', 'class' => 'form-control', 'title' => "Ingrese la descripcion del producto" )))
+            ->add('existencia', null, array('attr' => array('placeholder' => 'Ingrese la existencia del producto', 'class' => 'form-control', 'title' => "Ingrese la existencia del producto" )))
+            ->add('precio', null, array('attr' => array('placeholder' => 'Ingrese el precio', 'class' => 'form-control', 'title' => "Ingrese el precio" )))
+            ->add('claseProducto', null, array('attr' => array('placeholder' => 'Ingrese la clase o tipo del producto', 'class' => 'form-control', 'title' => "Ingrese la clase o tipo del producto" )))
+
+            ->add('confirmarRegistro', 'submit', array('attr' => array('value' => 'Confirmar registro', 'class' => 'btn btn-danger')));
     }
 
 	public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -27,6 +29,6 @@ class ProductoType extends AbstractType
 
     public function getName()
     {
-        return 'productoType';
+        return 'sm_admin_productoType';
     }
 }

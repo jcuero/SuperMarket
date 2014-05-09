@@ -49,6 +49,7 @@ class Cliente
     public function __construct()
     {
         $this->fechaCreacion = new \DateTime();
+        $this->plazoFactura = new \DateTime();
     }
 
     /**

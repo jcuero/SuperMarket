@@ -1,6 +1,6 @@
 sm_admin_producto:
     pattern: /
-    defaults: {_controller: SMAdminBundle:Producto:productos }
+    defaults: {_controller: SMAdminBundle:Producto:index }
 
 sm_admin_producto_new:
     pattern: /new
@@ -9,3 +9,11 @@ sm_admin_producto_new:
 sm_admin_producto_edit:
     pattern: /edit/{id}
     defaults: {_controller: SMAdminBundle:Producto:edit }
+
+sm_admin_producto_view:
+    pattern: /view/{id}
+    defaults: {_controller: SMAdminBundle:Producto:view }
+
+sm_admin_producto_delete:
+    pattern: /delete/{id}
+    defaults: {_controller: SMAdminBundle:Producto:delete }
