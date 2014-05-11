@@ -3,73 +3,24 @@
 
 {% block contenido %}
 
-<div class="row">
-  	<div class="col-sm-6 col-md-4">
-    	<div class="thumbnail">
-      		<div class="caption">
-        		<h3>Incidente UNO</h3>
-        		<p>
-        			Thumbnail label Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-        		</p>
-      		</div>
-    	</div>
-	</div>
-  	<div class="col-sm-6 col-md-4">
-    	<div class="thumbnail">
-      		<div class="caption">
-        		<h3>Incidente DOS</h3>
-        		<p>
-        			Thumbnail label Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-        		</p>
-      		</div>
-    	</div>
-	</div>
-
-  	<div class="col-sm-6 col-md-4">
-    	<div class="thumbnail">
-      		<div class="caption">
-        		<h3>Incidente TRES</h3>
-        		<p>
-        			Thumbnail label Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-        		</p>
-      		</div>
-    	</div>
-	</div>
-</div>
 
 <div class="row">
-  	<div class="col-sm-6 col-md-4">
-    	<div class="thumbnail">
-      		<div class="caption">
-        		<h3>Incidente CUATRO</h3>
-        		<p>
-        			Thumbnail label Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-        		</p>
-      		</div>
-    	</div>
-	</div>
 
-  	<div class="col-sm-6 col-md-4">
-    	<div class="thumbnail">
-      		<div class="caption">
-        		<h3>Incidente CINCO</h3>
-        		<p>
-        			Thumbnail label Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-        		</p>
-      		</div>
-    	</div>
-	</div>
-  	<div class="col-sm-6 col-md-4">
-    	<div class="thumbnail">
-      		<div class="caption">
-        		<h3>Incidente SEIS</h3>
-        		<p>
-        			Thumbnail label Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-        		</p>
-      		</div>
-    	</div>
-	</div>
+{% for incidente in incidentes  %}
+
+  <div class="col-sm-6 col-md-4">
+    <div class="panel panel-default panel-incidente">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{incidente.tipoIncidente}}</h3>
+        </div>
+        <div class="panel-body"> 
+          <p> {{incidente.descripcion}} </p>
+        </div>
+      </div>
+  </div>
+
+{% endfor %}
+
 </div>
-
 
 {% endblock %}

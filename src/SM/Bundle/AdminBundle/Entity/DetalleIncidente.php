@@ -24,7 +24,7 @@ class DetalleIncidente
 
     /** 
     * @ORM\ManyToOne(targetEntity="SM\Bundle\AdminBundle\Entity\Cliente") 
-    * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", nullable=false)
+    * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", nullable=true)
     */
     private $cliente;
 
@@ -36,16 +36,21 @@ class DetalleIncidente
 
     /** 
     * @ORM\ManyToOne(targetEntity="SM\Bundle\AdminBundle\Entity\Empleado") 
-    * @ORM\JoinColumn(name="empleado_recibe_id", referencedColumnName="id", nullable=false)
+    * @ORM\JoinColumn(name="empleado_recibe_id", referencedColumnName="id", nullable=true)
     */
     private $empleadoRecibe;
 
     /** 
     * @ORM\ManyToOne(targetEntity="SM\Bundle\AdminBundle\Entity\Empleado") 
-    * @ORM\JoinColumn(name="empleado_responde_id", referencedColumnName="id", nullable=false)
+    * @ORM\JoinColumn(name="empleado_responde_id", referencedColumnName="id", nullable=true)
     */
     private $empleadoResponde;
-        
+  
+
+    public function __construct()
+    {
+        $this->fecha = new \DateTime();
+    }
 
     /**
      * Get id

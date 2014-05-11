@@ -209,3 +209,12 @@ body {
 .btn-search{
  padding-left: 0px !important;
 }
+
+.panel-incidente{
+  min-height: 200px;
+}
+
+.container-sm{
+  margin-left: 8.66667%;
+  width: 83.3333%;
+}

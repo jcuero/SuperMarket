@@ -1,0 +1,3 @@
+sm_market_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SMMarketBundle:Default:index }

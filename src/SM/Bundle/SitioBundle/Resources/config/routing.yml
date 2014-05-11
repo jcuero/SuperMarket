@@ -1,0 +1,7 @@
+sm_sitio_portada:
+    resource: @SMSitioBundle/Resources/config/routing/portada.yml
+    prefix:   /
+
+sm_sitio_incidente:
+    resource: @SMSitioBundle/Resources/config/routing/incidente.yml
+    prefix:   /incidente

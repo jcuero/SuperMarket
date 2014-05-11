@@ -1,0 +1,3 @@
+sm_sitio:
+    pattern:  /
+    defaults: { _controller: SMSitioBundle:Sitio:index }

@@ -9,6 +9,12 @@ class PortadaController extends Controller
 {
     public function indexAction() 
     {
-        return $this->render('SMAdminBundle:Portada:index.html.twig');
+    	$em = $this->getDoctrine()->getManager();
+    	$incidentes = $em->getRepository('SMAdminBundle:DetalleIncidente')->findAll();
+
+
+        return $this->render('SMAdminBundle:Portada:index.html.twig', array(
+                    'incidentes' => $incidentes
+        ));
     }
 }

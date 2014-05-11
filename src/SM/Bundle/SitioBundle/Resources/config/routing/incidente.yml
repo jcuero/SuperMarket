@@ -1,0 +1,7 @@
+sm_sitio_incidente:
+    pattern:  /
+    defaults: { _controller: SMSitioBundle:Incidente:index }
+
+sm_sitio_incidente_new:
+    pattern:  /new
+    defaults: { _controller: SMSitioBundle:Incidente:new }

@@ -1,3 +1,11 @@
+sm_sitio:
+    resource: "@SMSitioBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sm_market:
+    resource: "@SMMarketBundle/Resources/config/routing.yml"
+    prefix:   /market
+
 sm_admin:
     resource: "@SMAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
