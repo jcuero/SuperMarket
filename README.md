@@ -1,4 +1,4 @@
 SuperMarket
-========================
+===========
 
-Es un sistema de facturación, al cual se le agrega un modulo PQRS.
+SuperMarket es un sistema de facturación con modulo de PQRS, realizado con el proposito de afianzar mis conocimientos en el framework Symfony2
