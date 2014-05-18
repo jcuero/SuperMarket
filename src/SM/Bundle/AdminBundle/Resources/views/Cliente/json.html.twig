@@ -1,0 +1,40 @@
+{% extends "backend.html.twig" %}
+{% block title %} Clientes JSON {% endblock %}
+
+{% block contenido %}
+
+    <div class="sub-header">
+        <div class="col-lg-3 btn-search">
+            <div class="input-group">
+                <form id="clienteForm">
+                    <input type="text" id="cedula" placeholder="Ingrese la cedula" class="form-control">
+                    <span class="input-group-btn">
+                        <a id="searchCliente" class="btn btn-default" role="button">
+                            Buscar
+                        </a>
+                    </span>
+                </form>
+            </div>
+        </div>
+        <div class="text-right">
+                <button type="button" id="btnAdd" class="btn btn-danger">Agregar un cliente</button>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class='table table-striped table-hover table-bordered'>
+            <thead>
+                <tr>
+                    <th>Cedula</th>
+                    <th>Nombre completo</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbodyCliente">
+
+            </tbody>
+        </table>
+        
+    </div>
+
+{% endblock %}

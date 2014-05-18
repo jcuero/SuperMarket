@@ -23,8 +23,6 @@
 
                 {% block menu %}
 
-                {% set activo = 'active' %}
-
                     <div class="header">
                         <ul class="nav nav-pills pull-right">
                             <li class=""><a href="{{ path('sm_admin_portada') }}">Inicio</a></li>
@@ -41,7 +39,7 @@
                 {% block contenedor %}
 
                     {% block info %}
-                    <!-- mostramos todos los flash bag existentes -->
+                        <!-- mostramos todos los flash bag existentes -->
                         {% for mensaje in app.session.flashbag.get('success') %}
                             <div class="alert alert-success">
                                 {{ mensaje }}
@@ -55,7 +53,7 @@
                         {% endfor %}
                         <!-- terminamos de mostrar los mensajes -->
                     {% endblock %}
-                    
+
                     {% block contenido %}
                     {% endblock %}
                 {% endblock %}

@@ -18,6 +18,10 @@ sm_admin_cliente_view:
     pattern: /view/{id}
     defaults: { _controller: SMAdminBundle:Cliente:view }
 
-sm_admin_cliente_search:
-    pattern: /search
-    defaults: { _controller: SMAdminBundle:Cliente:search }
+sm_admin_cliente_json:
+    pattern: /json
+    defaults: { _controller: SMAdminBundle:Cliente:toJSON }
+
+sm_admin_cliente_ajax:
+    pattern: /ajax
+    defaults: { _controller: SMAdminBundle:Cliente:ajax }

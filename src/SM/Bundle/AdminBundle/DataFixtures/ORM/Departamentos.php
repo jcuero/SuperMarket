@@ -1,5 +1,5 @@
 <?php
-namespace Cupon\departamentoBundle\DataFixtures\ORM;
+namespace SM\Bundle\AdminBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;

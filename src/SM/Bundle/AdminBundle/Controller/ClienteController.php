@@ -122,22 +122,43 @@ class ClienteController extends Controller
     }
 
     /**
-     * Busca y muestra cliente.
-     * 
-     */
-    public function searchAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+    * Devuelve un cliente en formato json
+    *
+    */
+    public function toJSONAction(){
+        $cliente = null;
         $request = $this->getRequest();
+        $cedula  = $request->query->get('cedula');
 
-        $cedula = 1112000007;
+        try {
+            $cliente = $this->search($cedula);    
+        } catch (\Exception $e) {
+            $this->get('session')->getFlashBag()->add('error', 'No se ha encontrado el cliente solicitado.');
 
-        $cliente = $em->getRepository('SMAdminBundle:Cliente')->findOneByCedula($cedula);
+            return new Response( json_encode(array('message' => 'No se ha encontrado el cliente solicitado.') ));
+        }
 
-        return $this->render('SMAdminBundle:Cliente:search.html.twig', array(
-                    'cliente' => $cliente
-        ));
+        return new Response($cliente->toJSON());
+
     }
 
+    /**
+    * Busca y devuelve un cliente.
+    *
+    */
+    public function search($cedula){
+        $em      = $this->getDoctrine()->getManager();
+        $cliente = $em->getRepository('SMAdminBundle:Cliente')->findOneByCedula($cedula);
+        
+        if (!$cliente) {
+            throw $this->createNotFoundException('No se ha encontrado el cliente solicitado');
+        }
+
+        return $cliente;
+    }
+
+    public function ajaxAction(){
+        return $this->render('SMAdminBundle:Cliente:json.html.twig');
+    }
 
 }

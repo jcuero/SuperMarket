@@ -52,6 +52,17 @@ class Cliente
         $this->plazoFactura = new \DateTime();
     }
 
+    public function toJSON(){
+        return json_encode(
+            array(
+                'id' => $this->id, 
+                'cedula' => $this->cedula, 
+                'nombres' => $this->nombres, 
+                'apellidos' => $this->apellidos
+                )
+            );
+    }
+
     /**
      * Get id
      *
