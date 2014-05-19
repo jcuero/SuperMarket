@@ -1,65 +1,15 @@
 {% extends '::base.html.twig' %}
 
-{% block stylesheets %}
-    {% stylesheets
-               '@SMAdminBundle/Resources/public/css/bootstrap.min.css'
-               '@SMAdminBundle/Resources/public/css/dashboard.css'
-               output='css/backend.css' %}
-    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('Flat-UI-master/css/includes-fonts.css')}}">
-    {% endstylesheets %}
-
-
-    <script type="text/javascript">
-    </script>
-{% endblock %}
-
-{% block body %}
-
-    <div class="container-fluid container-sm">
-        <div class="row">
-            <div class="main">
-
-                {% block menu %}
-
-                    <div class="header">
-                        <ul class="nav nav-pills pull-right">
-                            <li class=""><a href="{{ path('sm_admin_portada') }}">Inicio</a></li>
-                            <li class=""><a href="{{ path('sm_admin_cliente') }}">Cliente</a></li>
-                            <li><a href=" {{ path('sm_admin_empleado') }} ">Empleado</a></li>                            
-                            <li><a href="{{ path('sm_admin_tipo_incidente') }}">Tipo Incidente</a></li>
-                            <li><a href="{{ path('sm_admin_producto') }}">Producto</a></li>
-                            <li><a href="{{ path('sm_admin_clase_producto') }}">Clase Producto</a></li>
-                        </ul>
-                        <h3 class="text-muted">Super Market</h3>
-                    </div>
-                {% endblock %}
-
-                {% block contenedor %}
-
-                    {% block info %}
-                        <!-- mostramos todos los flash bag existentes -->
-                        {% for mensaje in app.session.flashbag.get('success') %}
-                            <div class="alert alert-success">
-                                {{ mensaje }}
-                            </div>
-                        {% endfor %}
-
-                        {% for mensaje in app.session.flashbag.get('error') %}
-                            <div class="alert alert-danger">
-                                {{ mensaje }}            
-                            </div>
-                        {% endfor %}
-                        <!-- terminamos de mostrar los mensajes -->
-                    {% endblock %}
-
-                    {% block contenido %}
-                    {% endblock %}
-                {% endblock %}
-
-            </div>
-        </div>
+{% block menu %}
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+            <li class= {% block activoPortada %} {% endblock %} ><a href="{{ path('sm_admin_portada') }}">Inicio</a></li>
+            <li class= {% block activoCliente %} {% endblock %} ><a href="{{ path('sm_admin_cliente') }}">Cliente</a></li>
+            <li class= {% block activoEmpleado %} {% endblock %} ><a href=" {{ path('sm_admin_empleado') }} ">Empleado</a></li>                            
+            <li class= {% block activoTipoIncidente %} {% endblock %} ><a href="{{ path('sm_admin_tipo_incidente') }}">Tipo Incidente</a></li>
+            <li class= {% block activoProducto %} {% endblock %} ><a href="{{ path('sm_admin_producto') }}">Producto</a></li>
+            <li class= {% block activoClaseProducto %} {% endblock %} ><a href="{{ path('sm_admin_clase_producto') }}">Clase Producto</a></li>
+        </ul>
+        <h3 class="text-muted">Super Market</h3>
     </div>
-
 {% endblock %}

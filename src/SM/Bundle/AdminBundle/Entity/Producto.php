@@ -34,6 +34,18 @@ class Producto
     */
 	private $claseProducto;
 
+    public function toJSON(){
+        return json_encode(
+            array(
+                'id' => $this->id, 
+                'codigo' => $this->codigo, 
+                'descripcion' => $this->descripcion, 
+                'existencia' => $this->existencia,
+                'precio' => $this->precio
+                )
+            );
+    }
+
     /**
      * Get id
      *

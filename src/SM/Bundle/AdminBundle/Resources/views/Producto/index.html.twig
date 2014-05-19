@@ -1,14 +1,18 @@
 {% extends "backend.html.twig" %}
 {% block title %} Productos {% endblock %}
+{% block activoProducto %} "activo" {% endblock %}
 
 {% block contenido %}
+
+    <div class="alert alert-danger oculto">
+    </div>
 
     <div class="sub-header">
         <div class="col-lg-3 btn-search">
             <div class="input-group">
-                <input type="text" class="form-control">
+                <input type="text" required id="codigo" placeholder="Ingrese el código" class="form-control">
                 <span class="input-group-btn">
-                    <a href=" path('sm_admin_producto_search') " class="btn btn-default" role="button">
+                    <a id="searchProducto" class="btn btn-default" role="button">
                         Buscar
                     </a>
                 </span>
@@ -16,7 +20,7 @@
         </div>
         <div class="text-right">
             <a href="{{ path('sm_admin_producto_new') }}">
-                <button type="button" class="btn btn-danger">Agregar un producto</button>
+                <button type="button" id="btnAdd" class="btn btn-danger">Agregar un producto</button>
             </a>
         </div>
     </div>
@@ -35,7 +39,7 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="tbodyProducto">
                 {% for producto in productosPadinados %}
                     <tr>
                         <td> {{ loop.index }}</td>
@@ -64,4 +68,71 @@
 
     </div>
 
+{% endblock %}
+
+{% block jsContext %}
+    <script>
+        $(document).ready(function() {
+
+            $('div.header li').click(function(){
+                $(this).addClass('activo');
+            });
+
+            $('#searchProducto').click(function() {
+                $.ajax({
+                    // la URL para la petición
+                    url: "{{ path('sm_admin_producto_json') }}",
+                    // la información a enviar
+                    // (también es posible utilizar una cadena de datos)
+                    data: {codigo: $('#codigo').val()},
+                    // especifica si será una petición POST o GET
+                    type: 'GET',
+                    // el tipo de información que se espera de respuesta
+                    dataType: 'json',
+                    // código a ejecutar si la petición es satisfactoria;
+                    // la respuesta es pasada como argumento a la función
+                    success: function(json_producto) {
+                        // la petición puede devolver un objeto con la información 
+                        // del cliente en formato json, o puede devolver un objeto con un mensaje
+                        // del tipo {"message":"texto indicando que no se encontró nada."}
+                        if (typeof json_producto.id == 'undefined') {
+                            $('div.alert').html(json_producto.message);
+                            $('div.alert').show();
+                            $('#tbodyProducto').html('');
+                            return;
+                        }
+
+                        var items = [];
+                        items.push('<tr>');
+                        items.push('<td>' + json_producto.id + '</td>');
+                        items.push('<td>' + json_producto.codigo + '</td>');
+                        items.push('<td>' + json_producto.descripcion + '</td>');
+                        items.push('<td>' + json_producto.existencia + '</td>');
+                        items.push('<td>' + '$ '+json_producto.precio + '</td>');
+                        items.push('</tr>');
+
+                        // ocultamos la alerta danger
+                        $('div.alert').hide();
+                        // hacemos una concatenación de los elementos del arreglo
+                        // y lo asignamos como html del tbody
+                        $('#tbodyProducto').html(items.join(''));
+                    },
+                    // código a ejecutar si la petición falla;
+                    // son pasados como argumentos a la función
+                    // el objeto jqXHR (extensión de XMLHttpRequest), un texto con el estatus
+                    // de la petición y un texto con la descripción del error que haya dado el servidor
+                    error: function(jqXHR, status, error) {
+                        alert('Disculpe, existió un problema');
+                    },
+                    // código a ejecutar sin importar si la petición falló o no
+                    complete: function(jqXHR, status) {
+                        // el campo 'codigo' queda en blanco luego de hacer la búsqueda
+                        $('#codigo').val('');
+                        // elimino la paginacion
+                        $('ul.pagination').remove(); 
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}

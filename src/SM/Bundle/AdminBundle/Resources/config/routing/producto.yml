@@ -17,3 +17,7 @@ sm_admin_producto_view:
 sm_admin_producto_delete:
     pattern: /delete/{id}
     defaults: {_controller: SMAdminBundle:Producto:delete }
+
+sm_admin_producto_json:
+    pattern: /json
+    defaults: { _controller: SMAdminBundle:Producto:toJSON }

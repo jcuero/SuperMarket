@@ -127,4 +127,36 @@ class ProductoController extends Controller
         return $this->redirect($this->generateUrl('sm_admin_producto'));
     }
 
+    /**
+    * Devuelve un producto en formato json
+    *
+    */
+    public function toJSONAction(){
+        $producto = null;
+        $request = $this->getRequest();
+        $codigo  = $request->query->get('codigo');
+
+        try {
+            $producto = $this->search($codigo);    
+        } catch (\Exception $e) {
+            return new Response( json_encode(array('message' => 'No se ha encontrado el producto solicitado.') ));
+        }
+
+        return new Response($producto->toJSON());
+    }
+
+    /**
+    * Busca y devuelve un producto por su código.
+    *
+    */
+    public function search($codigo){
+        $em      = $this->getDoctrine()->getManager();
+        $producto = $em->getRepository('SMAdminBundle:Producto')->findOneByCodigo($codigo);
+        
+        if (!$producto) {
+            throw $this->createNotFoundException('No se ha encontrado el producto solicitado');
+        }
+
+        return $producto;
+    }
 }

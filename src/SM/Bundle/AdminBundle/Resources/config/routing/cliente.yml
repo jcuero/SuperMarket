@@ -21,7 +21,3 @@ sm_admin_cliente_view:
 sm_admin_cliente_json:
     pattern: /json
     defaults: { _controller: SMAdminBundle:Cliente:toJSON }
-
-sm_admin_cliente_ajax:
-    pattern: /ajax
-    defaults: { _controller: SMAdminBundle:Cliente:ajax }

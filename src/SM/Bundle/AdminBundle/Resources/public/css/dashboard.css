@@ -59,11 +59,10 @@ body {
     color: #428BCA;
 }
 .nav-sidebar > .active > a {
-    background-color: #fff;
-    color: #428bca;
-    /*  border-radius: 6px;
-      margin-left: 10px;
-      color: #fff;*/
+    background-color: #1ABC9C;
+    color: #FFFFFF !important;
+    height: 12%;
+    border-radius: 4px;
 }
 
 
@@ -125,12 +124,6 @@ body {
     padding: 20px;
 }
 
-.activo{
-    background-color: #2980b9;
-    color: #FFF;
-    height: 12%;
-    border-radius: 25px;
-}
 
 .header{
     margin-left: -20px;
@@ -145,9 +138,8 @@ body {
     border-color: 1px solid #16a085;
 }
 
-
 /* Menú */
-* Everything but the jumbotron gets side spacing for mobile first views */
+/* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
@@ -218,3 +210,19 @@ body {
   margin-left: 8.66667%;
   width: 83.3333%;
 }
+
+.oculto{
+  display: none;
+}
+
+.activo{
+    background-color: #1ABC9C;
+    color: red;
+    height: 12%;
+    border-radius: 4px;
+}
+
+.nav-pills > .activo > a {
+  color: #FFF;
+}
+

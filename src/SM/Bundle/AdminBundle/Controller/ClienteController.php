@@ -133,8 +133,6 @@ class ClienteController extends Controller
         try {
             $cliente = $this->search($cedula);    
         } catch (\Exception $e) {
-            $this->get('session')->getFlashBag()->add('error', 'No se ha encontrado el cliente solicitado.');
-
             return new Response( json_encode(array('message' => 'No se ha encontrado el cliente solicitado.') ));
         }
 
@@ -156,9 +154,4 @@ class ClienteController extends Controller
 
         return $cliente;
     }
-
-    public function ajaxAction(){
-        return $this->render('SMAdminBundle:Cliente:json.html.twig');
-    }
-
 }

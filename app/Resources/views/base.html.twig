@@ -5,68 +5,62 @@
         <title>{% block title %} {% endblock %} | SuperMarket</title>
 
         {% block stylesheets %}
+            {% stylesheets
+                       '@SMAdminBundle/Resources/public/css/bootstrap.min.css'
+                       '@SMAdminBundle/Resources/public/css/dashboard.css'
+                       output='css/backend.css' %}
+            <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+            <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
+            <link rel="stylesheet" href="{{asset('Flat-UI-master/css/includes-fonts.css')}}">
+            {% endstylesheets %}
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+
         {% block body %}
 
+            <div class="container-fluid container-sm">
+                <div class="row">
+                    <div class="main">
 
+                        {% block menu %}
+                        {% endblock %}
+
+                        {% block contenedor %}
+                            {% block info %}
+                                <!-- mostramos todos los flash bag existentes -->
+                                {% for mensaje in app.session.flashbag.get('success') %}
+                                    <div class="alert alert-success">
+                                        {{ mensaje }}
+                                    </div>
+                                {% endfor %}
+
+                                {% for mensaje in app.session.flashbag.get('error') %}
+                                    <div class="alert alert-danger">
+                                        {{ mensaje }}            
+                                    </div>
+                                {% endfor %}
+                                <!-- terminamos de mostrar los mensajes -->
+                            {% endblock %}
+
+                            {% block contenido %}
+                            {% endblock %}
+                        {% endblock %}
+
+                    </div>
+                </div>
+            </div>
+
+            {% block javascripts %}
+                <script src="{{asset('js/jquery.min.js')}}"></script>
+                <script src="{{asset('js/bootstrap.min.js')}}"></script>                
+
+                {% block jsContext %}
+                {% endblock %}
+            {% endblock %}
         {% endblock %}
-        {% block javascripts %}
-            <script src="{{asset('js/jquery.min.js')}}"></script>
-
-            <script>
-                var msg = 1112000004;
-
-                $(document).ready(function() {
-
-                    $('#searchCliente').click(function() {
-                        $.ajax({
-                            // la URL para la petición
-                            url: "{{ path('sm_admin_cliente_json') }}",
-                            // la información a enviar
-                            // (también es posible utilizar una cadena de datos)
-                            data: {cedula: $('#cedula').val()},
-                            // especifica si será una petición POST o GET
-                            type: 'GET',
-                            // el tipo de información que se espera de respuesta
-                            dataType: 'json',
-                            // código a ejecutar si la petición es satisfactoria;
-                            // la respuesta es pasada como argumento a la función
-                            success: function(json_cliente) {
-                                console.log(' >',
-                                        'id: ' + json_cliente.id,
-                                        ' > cedula: ' + json_cliente.cedula,
-                                        ' > nombres: ' + json_cliente.nombres,
-                                        ' > apellidos: ' + json_cliente.apellidos
-                                        );
-
-                                var myItems = [], $tbodyCliente = $('#tbodyCliente');
-
-                                myItems.push('<tr><td> ' + json_cliente.cedula + '</td>');
-                                myItems.push('<td> ' + json_cliente.nombres + ' ' + json_cliente.apellidos + '</td></tr>');
-
-                                $tbodyCliente.append(myItems.join(''));
-                            },
-                            // código a ejecutar si la petición falla;
-                            // son pasados como argumentos a la función
-                            // el objeto jqXHR (extensión de XMLHttpRequest), un texto con el estatus
-                            // de la petición y un texto con la descripción del error que haya dado el servidor
-                            error: function(jqXHR, status, error) {
-                                alert('Disculpe, existió un problema');
-                            },
-                            // código a ejecutar sin importar si la petición falló o no
-                            complete: function(jqXHR, status) {
-                            }
-                        });
-                    });
-                });
-            </script>
-
-        {% endblock %}
-
 
     </body>
 </html>
